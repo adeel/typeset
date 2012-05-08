@@ -1,0 +1,24 @@
+# typeset
+
+A Clojure DSL for typesetting documents that consist of claims and their
+proofs.  Currently renders only HTML but at some point LaTeX output may be
+implemented.
+
+## Usage
+
+    (render :html {:numbering-prefix "1.1."}
+      (claim (text "The open subsets of a topological space " (math "X")
+                   " form a category " (math "\\mathrm{Top}(X)") ".")
+             (para "We have as morphisms the inclusion maps " (math "U \\to V")
+                   " for any inclusions " (math "V \\subseteq U") ", "
+                   (math "U") " and " (math "V") " open subsets of X.")
+             (para "Another paragraph."))
+      (claim (text "This is the second claim.")
+             (para "This is in the body of the second claim.")
+             (para "And this is another paragraph.")))
+
+## License
+
+Copyright (C) 2012 Adeel Ahmad Khan <adeel@adeel.ru>
+
+Distributed under the Eclipse Public License, the same as Clojure.
