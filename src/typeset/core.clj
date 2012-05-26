@@ -1,4 +1,5 @@
 (ns typeset.core
+  (:use [clojure.string :only (join)])
   (:use [clojure.set :only (union difference)])
   (:require [typeset.html :as html]))
 
@@ -37,8 +38,8 @@
 ;; formatting
 
 (defn- make-format-toggler [f]
-  (fn [text]
-    (let [text    (make-text-unit text)
+  (fn [& texts]
+    (let [text    (make-text-unit (join "" texts))
           formats (get text :formats #{})]
       (assoc text :formats (if (contains? formats f)
                              (difference formats #{f})
