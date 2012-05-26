@@ -52,6 +52,12 @@
              If the flag is set, the text will be parsed as math using LaTeX."}
   math (make-format-toggler :math))
 
+;;
+
+(defmacro defdocument
+  "Define a document as consisting of the given claims."
+  [doc-name & claims] `(def ~doc-name [~@claims]))
+
 ;; rendering
 
 (defn render
